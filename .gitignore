@@ -3,7 +3,6 @@
 *.tfstate.backup
 .terraform.tfstate.lock.info
 .terraform.lock.hcl
-.gitignore
 
 # Module directory
 .terraform/
