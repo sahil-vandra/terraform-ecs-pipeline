@@ -47,14 +47,21 @@ resource "aws_ecs_service" "main" {
   depends_on = [aws_alb_listener.front_end]
 }
 
+resource "aws_lb_target_group" "test" {
+  name     = "tf-example-lb-tg"
+  port     = 3001
+  protocol = "HTTP"
+  vpc_id   = aws_vpc.main.id
+}
+
 resource "aws_ecs_task_set" "example" {
   service         = aws_ecs_service.main.id
   cluster         = aws_ecs_cluster.main.id
   task_definition = aws_ecs_task_definition.app.arn
 
   load_balancer {
-    target_group_arn = aws_alb_target_group.app.arn
+    target_group_arn = aws_lb_target_group.test.arn
     container_name   = "sahil-demo"
-    container_port   = var.app_port
+    container_port   = 3001
   }
 }
