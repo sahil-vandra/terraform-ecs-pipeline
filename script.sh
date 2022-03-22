@@ -13,6 +13,7 @@ ECR_IMAGE="${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${IMAGE
 pwd 
 
 # create infrastructure by terraform script
+terraform init
 terraform apply -auto-approve
 
 # login in to aws ecr
