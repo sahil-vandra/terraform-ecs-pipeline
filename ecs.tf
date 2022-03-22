@@ -1,5 +1,5 @@
 resource "aws_ecs_cluster" "main" {
-  name = "myapp-cluster"
+  name = "Sahil-Demo-Cluster"
 }
 
 data "template_file" "myapp" {
@@ -15,7 +15,7 @@ data "template_file" "myapp" {
 }
 
 resource "aws_ecs_task_definition" "app" {
-  family = "myapp-task"
+  family = "Sahil-Demo-TaskDefinition"
   # execution_role_arn       = aws_iam_role.ecs_task_execution_role.arn
   execution_role_arn       = "arn:aws:iam::997817439961:role/sahil-smit-ecs-role"
   network_mode             = "awsvpc"
@@ -26,7 +26,7 @@ resource "aws_ecs_task_definition" "app" {
 }
 
 resource "aws_ecs_service" "main" {
-  name            = "myapp-service"
+  name            = "Sahil-Demo-Service"
   cluster         = aws_ecs_cluster.main.id
   task_definition = aws_ecs_task_definition.app.arn
   desired_count   = var.app_count
@@ -40,7 +40,7 @@ resource "aws_ecs_service" "main" {
 
   load_balancer {
     target_group_arn = aws_alb_target_group.app.id
-    container_name   = "myapp"
+    container_name   = "sahil-demo"
     container_port   = var.app_port
   }
 

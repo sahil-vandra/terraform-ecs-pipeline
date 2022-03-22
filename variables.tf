@@ -15,7 +15,7 @@ variable "az_count" {
 
 variable "app_image" {
   description = "Docker image to run in the ECS cluster"
-  default     = "nginx:latest"
+  default     = "terraform-ecs-pipeline-img"
 }
 
 variable "app_port" {

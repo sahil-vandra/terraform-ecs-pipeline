@@ -3,7 +3,7 @@
 AWS_ACCOUNT_ID="997817439961"
 AWS_DEFAULT_REGION="ap-south-1" 
 IMAGE_REPO_NAME="sahil-demo"
-IMAGE_TAG="terraform-ecs-pipeline-img_${GIT_COMMIT}"
+IMAGE_TAG="terraform-ecs-pipeline-img"
 CLUSTER_NAME="Sahil-Demo-Cluster"
 SERVICE_NAME="Sahil-Demo-Service"
 TASK_DEFINITION_NAME="Sahil-Demo-TaskDefinition"
