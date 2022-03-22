@@ -13,8 +13,8 @@ ECR_IMAGE="${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${IMAGE
 pwd 
 
 # create infrastructure by terraform script
-terraform init
-terraform apply -auto-approve
+# terraform init
+# terraform apply -auto-approve
 
 # login in to aws ecr
 aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 997817439961.dkr.ecr.ap-south-1.amazonaws.com
@@ -47,18 +47,18 @@ sed -i "s#NAME#$NAME#g" task-definition.json
 # Get task definition from the aws console
 TASK_DEF_REVISION=`aws ecs describe-task-definition --task-definition "${TASK_DEFINITION_NAME}" --region "${AWS_DEFAULT_REGION}" | jq .taskDefinition.revision`
 
-TASK_DEF_REVISION=$((TASK_DEF_REVISION-4))
+# TASK_DEF_REVISION=$((TASK_DEF_REVISION-4))
 
 cat task-definition.json
 
 # register new task definition from new generated task definition file
 aws ecs register-task-definition --cli-input-json file://task-definition.json --region="${AWS_DEFAULT_REGION}"
 
-if [ $TASK_DEF_REVISION>0 ]
-then
+# if [ $TASK_DEF_REVISION>0 ]
+# then
 	# deregister previous task definiiton
 	aws ecs deregister-task-definition --region ap-south-1 --task-definition Production:${TASK_DEF_REVISION}
-fi
+# fi
 
 # update servise
 aws ecs update-service --region ap-south-1 --cluster "${CLUSTER_NAME}" --service "${SERVICE_NAME}" --task-definition "${TASK_DEFINITION_NAME}" --force-new-deployment 
