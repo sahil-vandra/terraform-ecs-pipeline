@@ -1,6 +1,7 @@
 [
   {
     "name": "sahil-demo",
+    "essential": true,
     "image": "${app_image}",
     "cpu": ${fargate_cpu},
     "memory": ${fargate_memory},
