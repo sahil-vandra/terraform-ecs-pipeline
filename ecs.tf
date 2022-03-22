@@ -58,10 +58,4 @@ resource "aws_ecs_task_set" "example" {
   service         = aws_ecs_service.main.id
   cluster         = aws_ecs_cluster.main.id
   task_definition = aws_ecs_task_definition.app.arn
-
-  load_balancer {
-    target_group_arn = aws_lb_target_group.test.arn
-    container_name   = "sahil-demo"
-    container_port   = 3001
-  }
 }
