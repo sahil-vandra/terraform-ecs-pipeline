@@ -49,7 +49,7 @@ TASK_DEF_REVISION=`aws ecs describe-task-definition --task-definition "${TASK_DE
 echo ${TASK_DEF_REVISION}
 echo $TASK_DEF_REVISION
 
-TASK_DEF_REVISION=$((TASK_DEF_REVISION-4))
+TASK_DEF_REVISION=$((TASK_DEF_REVISION-2))
 
 cat task-definition.json
 
