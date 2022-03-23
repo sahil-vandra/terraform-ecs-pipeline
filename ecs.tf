@@ -42,6 +42,7 @@ resource "aws_ecs_service" "main" {
     target_group_arn = aws_alb_target_group.app.id
     container_name   = "sahil-demo"
     container_port   = var.app_port
+    elb_name         = aws_alb.main.name
   }
 
   depends_on = [aws_alb_listener.front_end]
