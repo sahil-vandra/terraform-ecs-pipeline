@@ -5,7 +5,7 @@ resource "aws_alb" "main" {
 }
 
 resource "aws_alb_target_group" "app" {
-  name        = "myapp-target-group"
+  name        = "sahil-app-target-group"
   port        = 3001
   protocol    = "HTTP"
   vpc_id      = aws_vpc.main.id
