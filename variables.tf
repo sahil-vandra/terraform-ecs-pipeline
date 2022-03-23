@@ -20,7 +20,7 @@ variable "app_image" {
 
 variable "app_port" {
   description = "Port exposed by the docker image to redirect traffic to"
-  default     = 3001
+  default     = 80
 }
 
 variable "app_count" {

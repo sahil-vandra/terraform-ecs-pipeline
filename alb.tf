@@ -6,10 +6,20 @@ resource "aws_alb" "main" {
 
 resource "aws_alb_target_group" "app" {
   name        = "sahil-app-target-group"
-  port        = 3001
+  port        = 80
   protocol    = "HTTP"
   vpc_id      = aws_vpc.main.id
   target_type = "ip"
+
+    health_check {
+    healthy_threshold   = "3"
+    interval            = "30"
+    protocol            = "HTTP"
+    matcher             = "200"
+    timeout             = "3"
+    path                = var.health_check_path
+    unhealthy_threshold = "2"
+  }
 }
 
 # Redirect all traffic from the ALB to the target group
